@@ -1,0 +1,7 @@
+{
+  "name": "Dora_App",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

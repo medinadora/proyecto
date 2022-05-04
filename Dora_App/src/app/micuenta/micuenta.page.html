@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/pagina-principal" color="tertiary">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title color="tertiary" class="btnprincipal"> Mi cuenta</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-card>
+    
+    <ion-item>
+      <ion-icon name="person-circle" slot="start"></ion-icon>
+      <ion-label>Dora Medina</ion-label>
+      <!-- <ion-button fill="outline" slot="end">View</ion-button> -->
+    </ion-item>
+  <ion-item> 
+    <ion-label>doramedina017@gmail.com</ion-label>
+  </ion-item>
+    <!-- <ion-card-content>
+      This is content, without any paragraph or header tags,
+      within an ion-card-content element.
+    </ion-card-content> -->
+  </ion-card>
+
+
+ 
+  <ion-col size="12">
+    <ion-button [routerLink]="['/login']" expand="block"
+      >CERRAR SESIÓN</ion-button
+    >
+  </ion-col>
+</ion-content>

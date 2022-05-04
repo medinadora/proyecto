@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start"> 
+      <ion-back-button defaultHref="/pagina-principal" color="tertiary"> </ion-back-button>
+    </ion-buttons>
+    <ion-title color="tertiary" class="btnprincipal"> Registro de vehiculo </ion-title>
+    
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  &nbsp;
+   <ion-toolbar> 
+    <ion-input> &nbsp;  &nbsp;   Introduzca los datos de su vehiculo</ion-input>   
+   </ion-toolbar>
+
+  <ion-item>
+    <ion-label position="Default Label">Tipo de vehiculo</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+  &nbsp;
+  <ion-item>
+    <ion-label position="fixed">Chapa</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+  &nbsp;
+  <ion-item>
+    <ion-label position="fixed">Chofer</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+  &nbsp;
+  <ion-item>
+    <ion-label position="fixed">Estado</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+  &nbsp;
+  <ion-item>
+    <ion-label position="fixed">Color</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+  &nbsp;
+  <ion-button expand="block" [routerLink]="['/pagina-principal']" >Guardar </ion-button>
+</ion-content>

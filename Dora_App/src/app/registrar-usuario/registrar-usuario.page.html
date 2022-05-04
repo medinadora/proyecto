@@ -1,0 +1,90 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/pagina-principal" color="tertiary">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title color="tertiary" class="btnprincipal"> Crear Cuenta</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card>
+  <form [formGroup]="registroForm" (ngSubmit)="crearUsuario()">
+    <ion-item lines="none" class="ion-text-center">
+      Introduzca sus datos personales</ion-item>
+
+    <ion-list>
+      <ion-item>
+        <ion-label position="floating">Nombre </ion-label>
+        <ion-input 
+        type="text" 
+        formControlName="usu_nombre" 
+        name="usu_nombre"
+        > </ion-input>
+      </ion-item>
+
+      &nbsp;
+      <ion-item>
+        <ion-label position="floating">Apellido</ion-label>
+        <ion-input
+          type="text"
+          formControlName="usu_apellido"
+          name="usu_apellido"
+        > </ion-input>
+      </ion-item>
+
+      &nbsp;
+      <ion-item>
+        <ion-label position="floating">Correo Electronico</ion-label>
+        <ion-input
+          type="email"
+          formControlName="usu_correo"
+          name="usu_correo "
+        ></ion-input>
+      </ion-item>
+      &nbsp;
+      <ion-item>
+        <ion-label position="floating">Numero de telefono</ion-label>
+        <ion-input
+          type="text"
+          formControlName="usu_telefono"
+          name="usu_telefono"
+        ></ion-input>
+      </ion-item>
+      &nbsp;
+      <ion-item>
+        <ion-label position="floating">Documento</ion-label>
+        <ion-input
+          type="number"
+          formControlName="usu_documento"
+          name="usu_documento"
+        ></ion-input>
+      </ion-item>
+      &nbsp;
+      <ion-item>
+        <ion-label position="floating">Contraseña</ion-label>
+        <ion-input
+          type="text"
+          formControlName="usu_contrasenha"
+          name="usu_contrasenha"
+        ></ion-input>
+      </ion-item>
+      &nbsp;
+
+      <ion-item>
+        <ion-label position="floating">Confirmar Contraseña</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+      &nbsp;
+
+      <ion-button 
+       expand="block"
+       (click)="crearUsuario()"
+       [routerLink]="['/pagina-principal']"
+       > CREAR CUENTA</ion-button>
+
+    </ion-list>
+  </form>
+</ion-card>
+</ion-content>
