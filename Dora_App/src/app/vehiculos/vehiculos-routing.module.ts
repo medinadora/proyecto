@@ -10,15 +10,15 @@ const routes: Routes = [
   },
   {
     path: 'listar',
-    loadChildren: () => import('./listar/listar.module').then( m => m.ListarPageModule)
+    loadChildren: () => import('./listar/listar.module').then( m => m.ListarVehiculoPageModule)
   },
   {
     path: 'crear',
-    loadChildren: () => import('./crear/crear.module').then( m => m.CrearPageModule)
+    loadChildren: () => import('./crear/crear.module').then( m => m.CrearVehiculosPageModule)
   },
   {
     path: 'actualizar',
-    loadChildren: () => import('./actualizar/actualizar.module').then( m => m.ActualizarPageModule)
+    loadChildren: () => import('./actualizar/actualizar.module').then( m => m.ActualizarVehiculosPageModule)
   }
 ];
 

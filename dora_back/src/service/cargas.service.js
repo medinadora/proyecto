@@ -12,7 +12,6 @@ const list = async (query, pageStar = 1, pageLimit = 10) => {
    const cargasResult = cargasModelResult[i];
      cargasArray.push(cargasResult.dataValues);
  }
-
  return cargasArray;
 }
 
@@ -31,6 +30,7 @@ const listFilter = async (query, pageStar = 1, pageLimit = 10) => {
     type: QueryTypes.SELECT,
 }
 );
+
  
 cargasResult = (cargasResult && cargasResult[0]) ? cargasResult [0] : [];
  console.log("cargasResult", cargasResult);
