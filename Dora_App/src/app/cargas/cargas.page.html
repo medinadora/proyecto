@@ -1,57 +1,69 @@
 <ion-header>
   <ion-toolbar color="secondary">
-    <ion-buttons slot="start"> 
-      <ion-back-button defaultHref="/pagina-principal" color="tertiary"> </ion-back-button>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/pagina-principal" color="tertiary">
+      </ion-back-button>
     </ion-buttons>
-    <ion-title color="tertiary" class="btnprincipal"> Cargas Disponibles </ion-title>
-    
+    <ion-title color="tertiary" class="btnprincipal"> Cargas </ion-title>
   </ion-toolbar>
 </ion-header>
+<ion-content class="ion-padding">
+  <ion-searchbar
+    placeholder="Buscar"
+    debounce="100"
+    (ionChange)="buscar ($event) "
+  ></ion-searchbar>
 
-<ion-content>
-  <ion-card>
-    <ion-item>
-      
-      <ion-label>De la empresa cargill</ion-label>
-      <ion-button fill="outline" slot="end">solicitar</ion-button>
-    </ion-item>
-    <ion-card-content>
-      Disponible hasta 12/06/22
-      Costo 2500000
-      cupo disponible 04
-      De hernadarias a Asuncion
-      carga de soja
-    </ion-card-content>
-  </ion-card>
+  <ion-list *ngFor="let cargas of users; let index = i  ">
+    <ion-item-sliding #slidingItem>
+      <ion-item class="item-label item ios in-list ion-focusable hydrated">
+        <ion-avatar slot="start">
+          <img src="https://cdn-icons-png.flaticon.com/512/3135/3135768.png" />
+        </ion-avatar>
 
-  <ion-card>
-    <ion-item>
-      <ion-label>De la empresa ADM</ion-label>
-      <ion-button fill="outline" slot="end">solicitar</ion-button>
-    </ion-item>
+        <ion-item>
+          <ion-label class="sc-ion-label-ios-h sc-ion-label-ios-s ios hydrated">
+            <h2>{{cargas.car_empresa}}</h2>
+            <h3>{{cargas.car_tipo}}</h3>
+            <p>{{cargas.car_origen_destino}}</p>
+            <p>{{cargas.car_precio}}</p>
+            <p>{{cargas.car_fecha}}</p>
+          </ion-label>
+        </ion-item>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option
+          [routerLink]="['/cargas/pendientes/' + this.cargas.car_codigo]"
+          color="primary"
+        >
+          Solicitar
+        </ion-item-option>
+        <ion-item-option
+          (click)="eliminarCarga (cargas, index, slidingItem)"
+          color="danger"
+        >
+          <ion-icon name="trash"></ion-icon>
+        </ion-item-option>
+
+        <ion-item-option
+          [routerLink]="['/cargas/actualizar/' + this.cargas.car_codigo]"
+          color="primary"
+        >
+          <ion-icon name="create"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+<ion-fab
+    [routerLink]="['/cargas/crear']"
+    vertical="bottom"
+    horizontal="end"
+    slot="fixed"
+>
+    <ion-fab-button class="btnCrear">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
   
-    <ion-card-content>
-      Disponible hasta 22/08/22
-      Costo 2500000
-      cupo disponible 02
-      De Asuncion a Itakyry
-      carga de soja
-    </ion-card-content>
-  </ion-card>
-
-  <ion-card>
-    <ion-item>
-      
-      <ion-label>De la empresa Puerto</ion-label>
-      <ion-button fill="outline" slot="end">solicitar</ion-button>
-    </ion-item>
-  
-    <ion-card-content>
-      Disponible hasta 14/09/22
-      Costo 50000000
-      cupo disponible 10
-      De Itakyry a Nuevo Horizonte
-      carga de trigo
-    </ion-card-content>
-  </ion-card>
 </ion-content>

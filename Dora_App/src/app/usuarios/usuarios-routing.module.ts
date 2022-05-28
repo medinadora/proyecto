@@ -9,25 +9,14 @@ const routes: Routes = [
     component: UsuariosPage
   },
   {
-    path: 'actualizar',
+    path: 'actualizar/:id',
     loadChildren: () => import('./actualizar/actualizar.module').then( m => m.ActualizarPageModule)
   },
   {
     path: 'crear',
     loadChildren: () => import('./crear/crear.module').then( m => m.CrearPageModule)
   },
-  {
-    path: 'actualizar',
-    loadChildren: () => import('./actualizar/actualizar.module').then( m => m.ActualizarPageModule)
-  },
-  {
-    path: 'listar',
-    loadChildren: () => import('./listar/listar.module').then( m => m.ListarPageModule)
-  },
-  {
-    path: 'crear',
-    loadChildren: () => import('./crear/crear.module').then( m => m.CrearPageModule)
-  }
+  
 ];
 
 @NgModule({

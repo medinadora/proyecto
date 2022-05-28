@@ -2,32 +2,36 @@ const { DataTypes } = require('sequelize');
 const {sequelize} = require ("../service/bd.service");
 const cargasModel = sequelize.define('cargas', {
   // Model attributes are defined 
-  codigo: {
+  car_codigo: {
     type: DataTypes.INTEGER,
     allowNull: false,
     primaryKey: true,
     autoIncrement: true,
   },
-  empresa: {
+  car_empresa: {
     type: DataTypes.STRING,
     allowNull: false
   },
-  tipo: {
+  car_tipo: {
     type: DataTypes.STRING,
     allowNull: false
   },
-  origen_destino: {
+  car_origen_destino: {
     type: DataTypes.STRING,
     allowNull: false
   },
-  precio: {
+  car_precio: {
     type: DataTypes.INTEGER,
     allowNull: false
   },
-   fecha: {
+   car_fecha: {
     type: DataTypes.DATE,
     allowNull: false
-  }
+  },
+  cargas_usu: {
+   type: DataTypes.INTEGER,
+   allowNull: false
+ }
 }, {
   tableName: 'cargas',
   timestamps: false

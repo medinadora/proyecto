@@ -18,6 +18,7 @@ export class CrearPage implements OnInit {
   ) {
     this.registroForm = this.formsBuilder.group({
       usu_nombre: [''],
+      usu_apellido: [''],
       usu_documento: [''],
       usu_telefono: [''],
       usu_correo: [''],
@@ -37,7 +38,7 @@ export class CrearPage implements OnInit {
       .subscribe((res) => {
         console.log(res);
       });
-      this.router.navigate(['/admin/usuarios']);
+      this.router.navigate(['/usuarios']);
   }
 
 }

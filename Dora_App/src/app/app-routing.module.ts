@@ -2,10 +2,7 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  {
-    path: '',
-    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
-  },
+ 
   {
     path: 'login',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
@@ -28,10 +25,6 @@ const routes: Routes = [
     loadChildren: () => import('./micuenta/micuenta.module').then( m => m.MicuentaPageModule)
   },
   {
-    path: 'viajes',
-    loadChildren: () => import('./viajes/viajes.module').then( m => m.ViajesPageModule)
-  },
-  {
     path: 'vehiculos',
     loadChildren: () => import('./vehiculos/vehiculos.module').then( m => m.VehiculosPageModule)
   },
@@ -41,14 +34,13 @@ const routes: Routes = [
   },
   {
     path: 'pendientes',
-    loadChildren: () => import('./pendientes/pendientes.module').then( m => m.PendientesPageModule)
+    loadChildren: () => import('./cargas/pendientes/pendientes.module').then( m => m.PendientesPageModule)
   },
   {
     path: 'usuarios',
     loadChildren: () => import('./usuarios/usuarios.module').then( m => m.UsuariosPageModule)
   }
-
-
+  
 ];
 @NgModule({
   imports: [

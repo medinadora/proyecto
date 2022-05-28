@@ -1,17 +1,18 @@
-const usuariosController = require('../controllers/usuarios.controllers');
- 
-module.exports = (app) =>{
+const usuarioController = require("../controllers/usuarios.controllers");
+const authorizationMiddleware = require("../middleware/authorization.middleware");
+module.exports = (app) => {
+  app.get("/usuarios",usuarioController.list);
 
-    app.get('/usuarios', usuariosController.list);
+  app.get("/usuarios-filter/:q",  usuarioController.listFilter);
 
-    app.get('/usuarios-filter', usuariosController.listFilter);
-    
-    app.get('/usuario/find/:id', usuariosController.getById );
-    
-    app.post('/usuario/create', usuariosController.create);
-    
-    app.put('/usuario/update', usuariosController.update);
+  app.get("/usuarios/find/:id",  usuarioController.getById);
 
-    app.delete('/usuario/remove/:id', usuariosController.remove)
+  app.post("/usuarios/create", usuarioController.create);
 
-} 
+  app.put("/usuarios/update/:id", usuarioController.update);
+
+  app.delete("/usuarios/remove/:id", usuarioController.remove);
+
+  app.post("/usuarios/login", usuarioController.login);
+  app.post("/usuarios/logout",authorizationMiddleware.authorization, usuarioController.logout);
+};

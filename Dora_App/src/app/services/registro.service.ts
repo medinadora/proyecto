@@ -6,12 +6,14 @@ import { Usuario } from '../interfaces/usuarios';
 @Injectable({
   providedIn: 'root',
 })
+
 export class RegistroService {
-  api = 'http://localhost:3000/usuario';
+  api = 'http://localhost:3000/usuarios';
   constructor(public http: HttpClient) {}
 
+
   listarUsuario() {
-    return this.http.get(this.api + 's');
+    return this.http.get(this.api);
   }
 
   crearUsuario(user: any) {
@@ -19,7 +21,8 @@ export class RegistroService {
   }
 
   buscarUsuario(texto: String) {
-    return this.http.get(this.api + `s-filter?q=${texto}`);
+    console.log(texto)
+    return this.http.get(this.api + `-filter/${texto}`);
   }
 
   obtenerUsuario(id: number){

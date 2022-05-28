@@ -7,6 +7,18 @@ const routes: Routes = [
   {
     path: '',
     component: VehiculosPage
+  },
+  {
+    path: 'listar',
+    loadChildren: () => import('./listar/listar.module').then( m => m.ListarPageModule)
+  },
+  {
+    path: 'crear',
+    loadChildren: () => import('./crear/crear.module').then( m => m.CrearPageModule)
+  },
+  {
+    path: 'actualizar',
+    loadChildren: () => import('./actualizar/actualizar.module').then( m => m.ActualizarPageModule)
   }
 ];
 

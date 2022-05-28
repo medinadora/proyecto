@@ -16,7 +16,8 @@ export class ActualizarPage implements OnInit {
   actualizarUsuarioForm: FormGroup;
 
   usu_nombre: any;
-  usu_email: any;
+  usu_apellido: any;
+  usu_correo: any;
   usu_documento: any;
   usu_telefono: any;
 
@@ -33,7 +34,8 @@ export class ActualizarPage implements OnInit {
        console.log('Este es el iddddd',this.id);
        this.actualizarUsuarioForm = this.formBuilder.group({
         usu_nombre: [''],
-        usu_email: [''],
+        usu_apellido: [''],
+        usu_correo: [''],
         usu_documento: [''],
         usu_telefono: ['']
        });

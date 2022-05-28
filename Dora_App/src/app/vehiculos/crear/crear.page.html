@@ -1,0 +1,91 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/pagina-principal" color="tertiary">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title color="tertiary"> Crear Vehiculos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+  <ion-content > 
+    <ion-card>
+      <form [formGroup] = "registroForm" (ngSubmit)="crearVehiculo()">
+        <ion-list>
+          <ion-item lines="full">
+            <ion-label color="primary" position="floating">Tipo de vehiculo</ion-label>
+            <ion-input
+              type="text"
+              formControlName="vehi_tipo_vehiculo"
+              name="vehi_tipo_vehiculo"
+            ></ion-input>
+          </ion-item>
+  
+          <ion-item lines="full">
+            <ion-label color="primary" position="floating">Chapa del vehiculo</ion-label>
+            <ion-input
+              type="text"
+              formControlName=" vehi_chapa"
+              name=" vehi_chapa"
+            ></ion-input>
+          </ion-item>
+  
+          <ion-item lines="full">
+            <ion-label color="primary" position="floating">Origen y Destino de la carga</ion-label>
+            <ion-input
+              type="text"
+              formControlName="car_origen_destino"
+              name="car_origen_destino"
+            ></ion-input>
+          </ion-item>
+        
+          <ion-item lines="full">
+            <ion-label color="primary" position="floating">Color del vehiculo</ion-label>
+            <ion-input
+              type="text"
+              formControlName=" vehi_color "
+              name=" vehi_color "
+            ></ion-input>
+          </ion-item>
+  
+          <ion-item lines="full">
+            <ion-label color="primary" position="floating">Estado del vehiculo</ion-label>
+            <ion-input
+              type="text"
+              formControlName=" vehi_estado"
+              name=" vehi_estado"
+            ></ion-input>
+          </ion-item>
+  
+          <ion-item>
+            <ion-label color="primary" position="floating">Chofer</ion-label>
+            <ion-input 
+            formControlName="vehi_chofer"
+            type="text"
+            name="vehi_chofer" 
+            ></ion-input>
+          </ion-item>
+         
+          <ion-item>
+            <ion-label color="primary" position="floating">Propietario</ion-label>
+            <ion-input 
+            formControlName="vehiculos_usu"
+            type="text"
+            name="vehiculos_usu" 
+            ></ion-input>
+          </ion-item>
+
+          <ion-row>
+            <ion-col>
+              <ion-button (click)="crearVehiculo()" 
+              expand="block"
+                >Crear Carga</ion-button
+              >
+            </ion-col>
+          </ion-row>
+        </ion-list>
+      </form>
+    </ion-card>
+  
+  </ion-content>

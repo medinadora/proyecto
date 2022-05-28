@@ -11,7 +11,7 @@
         
           <ion-item lines="none" [routerLink]="['./micuenta']">
             <ion-icon name="person-circle-outline" slot="start" size="small"></ion-icon>
-            Cuenta
+             Mi Cuenta
           </ion-item>
           <ion-item lines="none" [routerLink]="['/cargas']">
             <ion-icon name="person" slot="start" size="small"></ion-icon>
@@ -23,13 +23,16 @@
             Vehiculo
           </ion-item>
         
-          <ion-item lines="none" [routerLink]="['/viajes']">
-            <ion-icon name="earth-outline"slot="start" size="small"></ion-icon>
+
+          <ion-item lines="none" [routerLink]="['./usuarios']">
+            <ion-icon name= "person-outline"slot="start" size="small"></ion-icon>
             
-            Viajes
+            Usuarios
           </ion-item>
+
+
           <ion-item lines="none" [routerLink]="['./pagina-principal']">
-            <ion-icon name="exit-outline" slot="start" size="small"></ion-icon>
+            <ion-icon name= "exit-outline" slot="start" size="small"></ion-icon>
             
             Cerrar Sesion
           </ion-item>
@@ -37,6 +40,6 @@
         </ion-list>
     </ion-content>
   </ion-menu>
-  <!-- <ion-router-outlet id="menu"></ion-router-outlet> -->
-  <ion-router-outlet></ion-router-outlet>
+   <ion-router-outlet id="menu"></ion-router-outlet>
+  
 </ion-app>

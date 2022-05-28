@@ -1,40 +1,43 @@
 const { DataTypes } = require('sequelize');
 const {sequelize} = require ("../service/bd.service");
 
-const vehiculosModel = sequelize.define('vehiculo', {
+const vehiculosModel = sequelize.define('vehiculos', {
   // Model attributes are defined here
  
-  codigo: {
+  vehi_codigo: {
     type: DataTypes.INTEGER,
     allowNull: false,
     primaryKey: true,
     autoIncrement: true,
   },
-  tipo_vehiculo: {
+  vehi_tipo_vehiculo: {
     type: DataTypes.STRING,
     allowNull: false
   },
-  chapa: {
+  vehi_chapa: {
     type: DataTypes.STRING,
     allowNull: false
   },
-  color: {
+  vehi_color: {
     type: DataTypes.STRING,
     allowNull: false
   },
-  estado: {
+  vehi_estado: {
+    type: DataTypes.TEXT,
+    allowNull: false
+  },
+  vehi_chofer: {
     type: DataTypes.STRING,
     allowNull: false
   },
-   chofer: {
+  vehiculos_usu: {
     type: DataTypes.STRING,
     allowNull: false
   }
 
-
 }, {
   // Other model options go here
-  tableName: 'vehiculo',
+  tableName: 'vehiculos',
   createdAt: false,
   updatedAt: false
 });

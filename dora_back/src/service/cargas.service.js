@@ -17,17 +17,20 @@ const list = async (query, pageStar = 1, pageLimit = 10) => {
 }
 
 const listFilter = async (query, pageStar = 1, pageLimit = 10) => {
-
- //const cargasModelResult = await cargasModel.findAll ();
- let cargasResult = await sequelize.query(`SELECT * 
-                                              FROM CARGAS
-                                             WHERE (UPPER (empresa) LIKE :q
-                                             OR UPPER (tipo) LIKE :q)
-                                             ORDER BY codigo`, {
-                                                 replacements: { q:(query ? '%' + query.toUpperCase() + '%' : '%') 
-                                                },
-                                                // type: QueryTypes.SELECT
-                                             });
+ let cargasResult = await sequelize.query(
+     `SELECT * 
+                                                  FROM cargas
+                                                  WHERE UPPER (car_empresa) LIKE :q
+                                                  OR UPPER (car_origen_destino) LIKE :q
+                                                  OR UPPER (car_tipo) LIKE :q
+                                                  ORDER BY car_empresa`,
+{
+    replacements: {
+        q: query ? "%" + query.toUpperCase() + "%" : "%",
+},
+    type: QueryTypes.SELECT,
+}
+);
  
 cargasResult = (cargasResult && cargasResult[0]) ? cargasResult [0] : [];
  console.log("cargasResult", cargasResult);
@@ -35,9 +38,9 @@ cargasResult = (cargasResult && cargasResult[0]) ? cargasResult [0] : [];
  return cargasResult;
 }
 
-const getById = async (codigo) => {
+const getById = async (car_codigo) => {
     //Buscar en base de datos
-    const cargasModelResult = await cargasModel.findByPk (codigo);
+    const cargasModelResult = await cargasModel.findByPk (car_codigo);
     //console.log("find  codigo", codigo);
     if (cargasModelResult){
 
@@ -78,12 +81,12 @@ const update  = async (data) => {
     }
 }
 
-const remove = async (codigo) => {
+const remove = async (car_codigo) => {
     //Eliminar en base de datos
-    console.log("borrar codigo", codigo);
+    console.log("borrar codigo", car_codigo);
     const cargasModelCount = await cargasModel.destroy({
         where :{
-            codigo
+            car_codigo
         }
     })
     //eliminar el data en la bd

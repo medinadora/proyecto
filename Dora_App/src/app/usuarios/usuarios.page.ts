@@ -29,6 +29,14 @@ export class UsuariosPage implements OnInit {
     .subscribe((data ) => {
       console.log(data);
       this.users = data['usuarios'];
+      //console.log('codigoooos',this.users['usu_codigo'])
+      for (const usu_codigo in this.users) {
+        if (Object.prototype.hasOwnProperty.call(this.users, usu_codigo)) {
+          const element = this.users[usu_codigo];
+          //console.log(element.usu_codigo )
+          
+        }
+      }
     });
    }
 
@@ -46,10 +54,10 @@ export class UsuariosPage implements OnInit {
     });
   }
 
-  eliminarUsuario(usuario, i, slidingItem){
+  eliminarUsuario(usuarios, i, slidingItem){
     console.log('eliminar, eliminar');
     if(window.confirm('Seguro que quieres eliminar?')){
-      this.registroService.eliminarUsuarioService(usuario.usu_codigo)
+      this.registroService.eliminarUsuarioService(usuarios.usu_codigo)
       .subscribe(() => {
         this.users.splice(i,1);
         slidingItem.close();
