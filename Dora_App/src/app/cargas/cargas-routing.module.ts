@@ -13,8 +13,8 @@ const routes: Routes = [
     loadChildren: () => import('./listar/listar.module').then( m => m.ListarCargaPageModule)
   },
   {
-    path: 'pendientes/:id',
-    loadChildren: () => import('./pendientes/pendientes.module').then( m => m.PendientesPageModule)
+    path: 'actualizar',
+    loadChildren: () => import('./actualizar/actualizar.module').then( m => m.ActualizarCargaPageModule)
   },
   {
     path: 'crear',

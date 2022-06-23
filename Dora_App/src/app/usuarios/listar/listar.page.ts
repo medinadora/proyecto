@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RegistroService } from '../../services/registro.service';
 
-
-
 @Component({
   selector: 'app-listar',
   templateUrl: './listar.page.html',
@@ -21,7 +19,7 @@ export class ListarPage implements OnInit {
   listarUsuarios(){
     this.registroService.listarUsuario().subscribe(res =>{
       console.log(res);
-      this.listaUsuarios = res['usuario'];
+      this.listaUsuarios = res['usuarios'];
     });
   }
 }

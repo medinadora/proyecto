@@ -20,20 +20,34 @@ const list = async (query, pageStar = 1, pageLimit = 10) => {
 
 const listFilter = async (query, pageStar = 1, pageLimit = 10) => {
 
- //const cargasModelResult = await cargasModel.findAll ();
- let vehiculosResult = await sequelize.query(`SELECT * 
-                                              FROM VEHICULO
-                                             WHERE (UPPER (estado) LIKE :q
-                                             OR UPPER (tipo_vehiculo) LIKE :q)
-                                             ORDER BY codigo`, {
-                                                 replacements: { q:(query ? '%' + query.toUpperCase() + '%' : '%') 
-                                                },
-                                                // type: QueryTypes.SELECT
-                                             });
-vehiculosResult = (vehiculosResult && vehiculosResult[0]) ? vehiculosResult [0] : [];
+ let vehiculosResult = await sequelize.query( 
+     `SELECT * 
+                                            FROM  vehiculos as v
+                                             WHERE concat (UPPER (vehi_chofer), ' ',
+                                             UPPER (vehi_color), ' ',
+                                             UPPER (vehi_estado), ' ',
+                                             UPPER (vehi_chapa::TEXT), ' ')
+                                             LIKE :q
+                                             `,
+                                             //ORDER BY vehi_codigo`,
+                                            //   {
+                                            //      replacements: { q:(query ? '%' + query.toUpperCase() + '%' : '%') 
+                                            //     },
+                                            //     // type: QueryTypes.SELECT
+                                            //  });
+{
+      replacements: {
+        q: `%${query.toUpperCase()}%`,
+      },
+      //type: QueryTypes.SELECT,
+    }
+  );
+
+ vehiculosResult = (vehiculosResult && vehiculosResult [0]) ? vehiculosResult [0] : [];
  console.log("vehiculosResult", vehiculosResult);
  
  return vehiculosResult;
+
 }
 
 const getById = async (codigo) => {
@@ -63,32 +77,28 @@ const create = async (data) => {
     
 }
 
-const update  = async (data) => {
+const update  = async (data, id) => {
     //Actualizar en base de datos
     console.log("update data", data);
     const vehiculosModelCount= await vehiculosModel.update (data,{
  
          where :{
-            codigo: data.codigo
+            vehi_codigo: id,
         }
     });
 
-    if (vehiculosModelCount > 0){
-      const vehiculosModelResult = await vehiculosModel.findByPk(data.codigo);
-    return vehiculosModelResult.dataValues;
-    }else {
-        return null;
-    }
+    console.log("update data", vehiculosModelCount.datavalues);
+    return data;
      
 }
 
-const remove = async (codigo) => {
+const remove = async (vehi_codigo) => {
     //Eliminar en base de datos
-    console.log("borrar codigo", codigo);
+    console.log("borrar codigo", vehi_codigo);
     const vehiculosModelCount = await vehiculosModel.destroy({
         
         where :{
-            codigo
+            vehi_codigo
         }
     })
     //eliminar el data en la bd

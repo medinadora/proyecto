@@ -19,25 +19,12 @@ export class CargaService {
   }
 
   buscarCarga(texto: String) {
-    return this.http.get(this.api + `s-filter?q=${texto}`);
+    return this.http.get(this.api + `-filter?q=${texto}`);
   }
 
   obtenerCarga(id: number){
     const path = `${this.api}/find/${id}`;
     return this.http.get(path);
   }
-
-
-  // actualizarUsuario(usu_codigo, usuario: Usuario) {
-  //   return this.http.put(
-  //     'http://localhost:3000/usuario/update/' + usu_codigo,
-  //     usuario
-  //   );
-  // }
-
-  // eliminarUsuarioService(id: Observable<Usuario[]>) {
-  //   return this.http.delete<Usuario[]>(
-  //     'http://localhost:3000/usuario/remove/' + id
-  //   );
-  // }
+  
 }

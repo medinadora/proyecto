@@ -42,9 +42,7 @@ export class UsuariosPage implements OnInit {
 
   buscar(event){
     const valor = event.detail.value;
-
-    this.registroService.buscarUsuario(valor)
-    .subscribe(data => {
+    this.registroService.buscarUsuario(valor).subscribe(data => {
       console.log(data);
       if(data){
         this.users = data['usuarios'];

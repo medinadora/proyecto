@@ -20,7 +20,7 @@ export class ListarCargaPage implements OnInit {
   listarCargas(){
     this.registroService.listarCarga().subscribe(res =>{
       console.log(res);
-      this.listarCargas = res['cargas'];
+      this.listaCargas = res['cargas'];
     });
   }
 }

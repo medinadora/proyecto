@@ -16,7 +16,10 @@ const routes: Routes = [
     path: 'crear',
     loadChildren: () => import('./crear/crear.module').then( m => m.CrearPageModule)
   },
-  
+  {
+    path: 'listar',
+    loadChildren: () => import('./listar/listar.module').then( m => m.ListarPageModule)
+  },
 ];
 
 @NgModule({

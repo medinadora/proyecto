@@ -10,7 +10,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class ActualizarPage implements OnInit {
 
-
   usuarios: any;
   id: any;
   actualizarUsuarioForm: FormGroup;
@@ -26,6 +25,7 @@ export class ActualizarPage implements OnInit {
     public formBuilder: FormBuilder,
     public router: Router,
     public activatedRoute: ActivatedRoute
+
     ) {
       this.id = this.activatedRoute.snapshot.paramMap.get('id');
     }
@@ -60,7 +60,6 @@ export class ActualizarPage implements OnInit {
         .subscribe((res) => {
           console.log(res);
           this.actualizarUsuarioForm.reset();
-          //this.router.navigate(['/usuarios']);
         });
 
   }

@@ -11,7 +11,7 @@ const list =async (req,res) => {
 ;}
 const listFilter =async (req,res) => {
     
-    const vehiculos= await vehiculoService.listFilter(req.query.q);
+    const vehiculos= await vehiculoService.listFilter(req.params.q);
     res.send({
         success: true,
         vehiculos
@@ -22,11 +22,9 @@ const listFilter =async (req,res) => {
 const getById = async (req, res) => {   
     const vehiculos = await vehiculoService.getById(req.params.id);
     
-    let jsonResultado =  req.query;
+    const jsonResultado =  req.query;
     jsonResultado['success'] = true;
     jsonResultado['vehiculos'] = vehiculos;
-
-
     res.status(201).send(jsonResultado);
 }
 
@@ -34,19 +32,21 @@ const getById = async (req, res) => {
 const create = async  (req, res) => {   
     const vehiculos = await vehiculoService.create(req.body);
 
-    res.status(202).send({
+    res.status(200).send({
         success: true,
         vehiculos
     });
 }
 
+
 const update = async (req, res) => {   
-    const vehiculos = await vehiculoService.update(req.body);
+    const vehiculos = await vehiculoService.update(req.body, req.params.id);
+    console.log('datos actualizacion',vehiculos);
     res.status(202).send({
         success: true,
-        vehiculos
+        vehiculos,
     });
-}
+;}
 
 const remove = async (req, res) => {   
     const booleanValue = await vehiculoService.remove(req.params.id);
@@ -55,7 +55,6 @@ const remove = async (req, res) => {
         
     });
 }
-
 
 module.exports = {
 list, listFilter, getById, create, update, remove

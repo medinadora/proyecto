@@ -24,12 +24,9 @@ export class CargasPage implements OnInit {
     .subscribe((data ) => {
       console.log(data);
       this.users = data['cargas'];
-      //console.log('codigoooos',this.users['usu_codigo'])
       for (const car_codigo in this.users) {
         if (Object.prototype.hasOwnProperty.call(this.users, car_codigo)) {
           const element = this.users[car_codigo];
-          //console.log(element.usu_codigo )
-          
         }
       }
     });

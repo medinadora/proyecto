@@ -23,7 +23,7 @@ export class CrearCargasPage implements OnInit {
       car_origen_destino: [''],
       car_precio: [''],
       car_fecha: [''],
-      car_usu: [''],
+      
       
     });
   }

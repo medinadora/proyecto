@@ -33,10 +33,6 @@ const routes: Routes = [
     loadChildren: () => import('./cargas/cargas.module').then( m => m.CargasPageModule)
   },
   {
-    path: 'pendientes',
-    loadChildren: () => import('./cargas/pendientes/pendientes.module').then( m => m.PendientesPageModule)
-  },
-  {
     path: 'usuarios',
     loadChildren: () => import('./usuarios/usuarios.module').then( m => m.UsuariosPageModule)
   }

@@ -15,7 +15,6 @@ export class ActualizarVehiculosPage implements OnInit {
   id: any;
   actualizarVehiculoForm: FormGroup;
 
- 
     vehi_tipo_vehiculo: any;
     vehi_chapa:  any;
     vehi_color:  any;
@@ -35,12 +34,12 @@ export class ActualizarVehiculosPage implements OnInit {
      ngOnInit() {
        console.log('Este es el iddddd',this.id);
        this.actualizarVehiculoForm = this.formBuilder.group({
-        vehi_tipo_vehiculo: [''],
-        vehi_chapa:  [''],
+         vehi_tipo_vehiculo: [''],
+         vehi_chapa:  [''],
          vehi_color:  [''],
-        vehi_estado: [''],
+         vehi_estado: [''],
          vehi_chofer:  [''],
-          vehiculos_usu: ['']
+         vehiculos_usu: ['']
        });
       this.getDato(this.id);
      }

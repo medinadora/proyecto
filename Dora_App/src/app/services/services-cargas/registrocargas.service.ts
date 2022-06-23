@@ -8,11 +8,11 @@ import { Observable } from 'rxjs';
     providedIn: 'root',
   })
   export class RegistroCargaService {
-    api = 'http://localhost:3000/carga';
+    api = 'http://localhost:3000/cargas';
     constructor(public http: HttpClient) {}
   
     listarCarga() {
-      return this.http.get(this.api + 's');
+      return this.http.get(this.api);
     }
   
     crearCarga(user: any) {
@@ -20,26 +20,25 @@ import { Observable } from 'rxjs';
     }
   
     buscarCarga(texto: String) {
-      return this.http.get(this.api + `s-filter?q=${texto}`);
+      //return this.http.get(this.api + `-filter?q=${texto}`);
+      return this.http.get(this.api + `-filter/${texto}` );
     }
   
     obtenerCarga(id: number){
-      const path = `${this.api}/find/${id}`;
+      const path = `${this.api}/find/${id} `;
       return this.http.get(path);
     }
-  
-  
-    pendientesCarga(car_codigo, carga: Carga) {
+    
+    actualizarCarga(car_codigo, carga: Carga) {
       return this.http.put(
-        'http://localhost:3000/carga/update/' + car_codigo,
-        carga
+        'http://localhost:3000/cargas/update/' + car_codigo,
+         carga
       );
     }
-    
-  
+   
     eliminarCargaService(id: Observable<Carga[]>) {
       return this.http.delete<Carga[]>(
-        'http://localhost:3000/carga/remove/' + id
+        'http://localhost:3000/cargas/remove/' + id
       );
     }
   }

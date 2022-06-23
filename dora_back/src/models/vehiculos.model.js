@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize');
 const {sequelize} = require ("../service/bd.service");
 
-const vehiculosModel = sequelize.define('vehiculos', {
+const vehiculosModel = sequelize.define("vehiculos", {
   // Model attributes are defined here
  
   vehi_codigo: {
@@ -23,23 +23,17 @@ const vehiculosModel = sequelize.define('vehiculos', {
     allowNull: false
   },
   vehi_estado: {
-    type: DataTypes.TEXT,
+    type: DataTypes.STRING,
     allowNull: false
   },
   vehi_chofer: {
     type: DataTypes.STRING,
     allowNull: false
-  },
-  vehiculos_usu: {
-    type: DataTypes.STRING,
-    allowNull: false
   }
 
 }, {
-  // Other model options go here
-  tableName: 'vehiculos',
-  createdAt: false,
-  updatedAt: false
+  tableName: "vehiculos",
+    timestamps: false,
 });
 
 module.exports = {

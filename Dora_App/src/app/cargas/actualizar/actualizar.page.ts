@@ -4,17 +4,17 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-pendientes',
-  templateUrl: './pendientes.page.html',
-  styleUrls: ['./pendientes.page.scss'],
+  selector: 'app-actualizar',
+  templateUrl: './actualizar.page.html',
+  styleUrls: ['./actualizar.page.scss'],
 })
-export class PendientesPage implements OnInit {
+export class ActualizarCargaPage implements OnInit {
 
-  carga = [];
+  
+  cargas: any;
   id: any;
-  pendientesCargaForm: FormGroup;
-  users: any;
-
+  actualizarCargaForm: FormGroup;
+  
   car_empresa: any;
   car_tipo: any;
   car_origen_destino: any;
@@ -27,14 +27,22 @@ export class PendientesPage implements OnInit {
     public formBuilder: FormBuilder,
     public router: Router,
     public activatedRoute: ActivatedRoute
-    ) {
 
+    ) {
+      this.id = this.activatedRoute.snapshot.paramMap.get('id');
       
     }
-
-     ngOnInit() {
-       this.listarCarga();
-     }
+    ngOnInit() {
+      console.log('Este es el iddddd',this.id);
+      this.actualizarCargaForm = this.formBuilder.group({
+        car_empresa: [''],
+        car_tipo: [''],
+        car_origen_destino: [''],
+        car_precio: [''],
+        car_fecha: ['']
+      });
+     this.getDato(this.id);
+    }
 
 
   getDato(car_codigo){
@@ -46,37 +54,19 @@ export class PendientesPage implements OnInit {
   }
 
   onSubmit(){
-    console.log(this.pendientesCargaForm.value);
+    console.log(this.actualizarCargaForm.value);
   }
-  pendientesForm() {
+  actualizarForm() {
     console.log('codigo id metodo update', this.id);
-      this.registroService.pendientesCarga(this.id, this.pendientesCargaForm.value)
+      this.registroService.actualizarCarga(this.id, this.actualizarCargaForm.value)
         .subscribe((res) => {
           console.log(res);
-          this.pendientesCargaForm.reset();
-          //this.router.navigate(['/usuarios']);
+          this.actualizarCargaForm.reset();
+          //this.router.navigate(['/cargas']);
         });
 
   }
-
-  listarCarga(){
-    this.id = this.activatedRoute.snapshot.paramMap.get('id');
-    this.registroService.obtenerCarga(this.id).subscribe((data) => {
-      console.log(data)
-      if (data) {
-        this.carga = data['cargas'];
-      } else {
-        this.carga = [];
-      }
-
-    
-          
-        
-      
-    });
-    
-  }
-
+  
   }
 
 

@@ -1,7 +1,7 @@
 const usuarioService = require('../service/usuarios.service')
 
 const list =async (req,res) => {
-    console.log("El id del usuario que invoco es", req.params);
+    //console.log("El id del usuario que invoco es", req.params);
     const usuarios = await usuarioService.list(req.query.q);
     res.send({
         success: true,
@@ -9,10 +9,8 @@ const list =async (req,res) => {
     });
 
 }
-const listFilter =async (req,res) => {
+const listFilter =async (req, res) => {
 
-    console.log(1111111,req.params.q)
-    
     const usuarios = await usuarioService.listFilter(req.params.q);
     res.send({
         success: true,
@@ -27,9 +25,7 @@ const getById = async (req, res) => {
     const jsonResultado =  req.query;
     jsonResultado["success"] = true;
     jsonResultado["usuarios"] = usuarios;
-
-
-    res.status(200).send(jsonResultado);
+    res.status(201).send(jsonResultado);
 }
 
 
@@ -50,7 +46,6 @@ const update = async (req, res) => {
         usuarios,
     });
 ;}
-
 
 const remove = async (req, res) => {   
     const booleanValue = await usuarioService.remove(req.params.id);

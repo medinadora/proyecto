@@ -9,9 +9,10 @@ const list =async (req,res) => {
     });
 
 ;}
+
 const listFilter =async (req,res) => {
     
-    const cargas= await cargaService.listFilter(req.query.q);
+    const cargas= await cargaService.listFilter(req.params.q);
     res.send({
         success: true,
          cargas
@@ -24,25 +25,24 @@ const getById = async (req, res) => {
     let jsonResultado =  req.query;
     jsonResultado['success'] = true;
     jsonResultado['cargas'] = cargas;
-
-
     res.status(201).send(jsonResultado);
 }
 
 const create = async  (req, res) => {   
     const cargas = await cargaService.create(req.body);
 
-    res.status(202).send({
+    res.status(200).send({
         success: true,
         cargas
     });
 }
 
 const update = async (req, res) => {   
-    const cargas = await cargaService.update(req.body);
+    const cargas = await cargaService.update(req.body, req.params.id);
+    console.log ('cargas actualizado', cargas)
     res.status(202).send({
         success: true,
-        cargas
+        cargas,
     });
 }
 

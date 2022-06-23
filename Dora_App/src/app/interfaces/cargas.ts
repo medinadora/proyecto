@@ -6,7 +6,6 @@ export interface Carga {
     car_origen_destino: string;
     car_precio: number;
     car_fecha: Date;
-    cargas_usu:number;
-    
+
 }
   

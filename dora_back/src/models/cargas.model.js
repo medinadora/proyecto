@@ -1,6 +1,8 @@
 const { DataTypes } = require('sequelize');
 const {sequelize} = require ("../service/bd.service");
-const cargasModel = sequelize.define('cargas', {
+
+const CargaModel = sequelize.define(
+  "cargas", {
   // Model attributes are defined 
   car_codigo: {
     type: DataTypes.INTEGER,
@@ -27,16 +29,11 @@ const cargasModel = sequelize.define('cargas', {
    car_fecha: {
     type: DataTypes.DATE,
     allowNull: false
-  },
-  cargas_usu: {
-   type: DataTypes.INTEGER,
-   allowNull: false
- }
+  }
 }, {
-  tableName: 'cargas',
+  tableName: "cargas",
   timestamps: false
 });
 module.exports = {
-  cargasModel
-}
-;
+  CargaModel
+};

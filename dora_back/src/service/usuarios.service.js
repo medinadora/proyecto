@@ -1,15 +1,16 @@
 const { UsuarioModel } = require("../models/usuarios.model");
 const { sequelize } = require("../service/bd.service");
 const { QueryTypes } = require("sequelize");
+
 const jwt = require("jsonwebtoken");
 // Consulta en la Base de datos
 
 const list = async (query, pageStart = 1, pageLimit = 10) => {
-  const usuarioModelResults = await UsuarioModel.findAll();
+  const usuarioModelResult = await UsuarioModel.findAll();
 
   const usuariosArray = new Array();
-  for (let i = 0; i < usuarioModelResults.length; i++) {
-    const usuariosResult = usuarioModelResults[i];
+  for (let i = 0; i < usuarioModelResult.length; i++) {
+    const usuariosResult = usuarioModelResult[i];
     usuariosArray.push(usuariosResult.dataValues);
   }
 
@@ -20,34 +21,36 @@ const list = async (query, pageStart = 1, pageLimit = 10) => {
 
 const listFilter = async (query, pageStart = 1, pageLimit = 10) => {
 
-  console.log("aa")
-  console.log(query)
-  let usuariosResults = await sequelize.query(
-    ` 
-    SELECT *FROM usuarios WHERE concat(UPPER (usu_nombre) ,  ' ', UPPER (usu_apellido) ,' ', 
-     UPPER (usu_documento::TEXT),' ',UPPER (usu_telefono))  LIKE :q ORDER BY usu_nombre`,
+  let usuariosResult = await sequelize.query(
+    ` SELECT * FROM usuarios as u
+                                              WHERE concat(UPPER (usu_nombre) , ' ',
+                                              (usu_apellido) ,' ', 
+                                              (usu_documento::TEXT),' ') 
+    LIKE :q 
+    `,
+    //ORDER BY (usu_nombre)
     {
       replacements: {
-        q: (`%${query.toUpperCase()}%`),
+        q: `%${query.toUpperCase()}%`,
       },
-      type: QueryTypes.SELECT,
+      //type: QueryTypes.SELECT,
     }
   );
 
-  //usuariosResults = (usuariosResults && usuariosResults [0]) ? usuariosResults[0] : [];
+  usuariosResult = (usuariosResult && usuariosResult [0]) ? usuariosResult[0] : [];
 
-  console.log("usuariosResults", usuariosResults);
+  console.log("usuariosResult", usuariosResult);
 
-  return usuariosResults;
+  return usuariosResult;
 };
 
 // Buscar en la Base de datos por codigo
 
 const getById = async (codigo) => {
-  const usuarioModelResults = await UsuarioModel.findByPk(codigo);
+  const usuarioModelResult = await UsuarioModel.findByPk(codigo);
 
-  if (usuarioModelResults) {
-    return usuarioModelResults.dataValues;
+  if (usuarioModelResult) {
+    return usuarioModelResult.dataValues;
   } else {
     return null;
   }
@@ -57,9 +60,8 @@ const getById = async (codigo) => {
 
 const create = async (data) => {
   console.log("create data", data);
-
-  const usuarioModelResults = await UsuarioModel.create(data);
-  return usuarioModelResults.dataValues;
+  const usuarioModelResult = await UsuarioModel.create(data);
+  return usuarioModelResult.dataValues;
   // if (usuarioModelResults) {
   //   return usuarioModelResults.dataValues;
   // } else {
@@ -102,7 +104,7 @@ const remove = async (usu_codigo) => {
 const login = async (data) => {
   console.log("login data", data);
   //buscar al usuario por nombre y contrasenha
-  let usuariosResults = await sequelize.query(
+  let usuariosResult = await sequelize.query(
                                            `SELECT usu_codigo, usu_nombre, token
                                             FROM usuarios
                                             WHERE usu_nombre = :n
@@ -117,27 +119,27 @@ const login = async (data) => {
 
   
 
-  if (usuariosResults && usuariosResults.length > 0) {
-    if(usuariosResults[0].token && usuariosResults[0].usu_codigo != ''){
+  if (usuariosResult && usuariosResult.length > 0) {
+    if(usuariosResult[0].token && usuariosResult[0].usu_codigo != ''){
       return {
-        token : usuariosResults[0].token
+        token : usuariosResult[0].token
       };
     }else{
       const payload = {
         usu_nombre: data.usu_nombre,
-        usu_codigo: usuariosResults[0].usu_codigo,
+        usu_codigo: usuariosResult[0].usu_codigo,
       };
   
       var token = jwt.sign(payload, "1234");
   
-      let updateTokenUsuarioResults = await sequelize.query(
+      let updateTokenUsuarioResult = await sequelize.query(
                                              `UPDATE usuarios
                                               SET token = :t
                                               WHERE usu_codigo = :i`,
         {
           replacements: {
              t: token,
-            i: usuariosResults[0].usu_codigo
+            i: usuariosResult[0].usu_codigo
           },
           type: QueryTypes.UPDATE,
         });
@@ -155,7 +157,7 @@ const login = async (data) => {
 
 const logout = async (usuarioId) => {
 
-  let updateTokenUsuarioResults = await sequelize.query(
+  let updateTokenUsuarioResult = await sequelize.query(
                                                      `UPDATE usuarios
                                                      SET token = null
                                                      WHERE usu_codigo = :i`,

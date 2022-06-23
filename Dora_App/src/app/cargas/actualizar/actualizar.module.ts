@@ -4,9 +4,9 @@ import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { PendientesPageRoutingModule } from './pendientes-routing.module';
+import { ActualizarCargaPageRoutingModule } from './actualizar-routing.module';
 
-import { PendientesPage } from './pendientes.page';
+import { ActualizarCargaPage } from './actualizar.page';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -14,11 +14,11 @@ import { HttpClientModule } from '@angular/common/http';
     CommonModule,
     FormsModule,
     IonicModule,
-    PendientesPageRoutingModule,
+    ActualizarCargaPageRoutingModule ,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule 
   ],
-  declarations: [PendientesPage]
+  declarations: [ActualizarCargaPage]
 })
-export class PendientesPageModule {}
+export class ActualizarCargaPageModule {}

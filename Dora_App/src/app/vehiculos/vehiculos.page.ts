@@ -9,7 +9,7 @@ import { RegistroVehiculoService } from '../services/services-vehiculos/registro
 export class VehiculosPage implements OnInit {
 
   users;
-  usu_codigo: number;
+  vehi_codigo: number;
 
   constructor(private registroService: RegistroVehiculoService) { }
 
@@ -43,8 +43,7 @@ export class VehiculosPage implements OnInit {
   buscar(event){
     const valor = event.detail.value;
 
-    this.registroService.buscarVehiculo(valor)
-    .subscribe(data => {
+    this.registroService.buscarVehiculo(valor).subscribe(data => {
       console.log(data);
       if(data){
         this.users = data['vehiculos'];

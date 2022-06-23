@@ -39,6 +39,6 @@ export class CrearVehiculosPage implements OnInit {
       .subscribe((res) => {
         console.log(res);
       });
-      this.router.navigate(['/cargas']);
+      this.router.navigate(['/vehiculos']);
   }
 }

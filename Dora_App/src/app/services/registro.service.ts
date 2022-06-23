@@ -21,27 +21,24 @@ export class RegistroService {
   }
 
   buscarUsuario(texto: String) {
-    console.log(texto)
-    return this.http.get(this.api + `-filter/${texto}`);
+    return this.http.get(this.api + `-filter/${texto}` );
   }
-
+ 
   obtenerUsuario(id: number){
     const path = `${this.api}/find/${id}`;
     return this.http.get(path);
   }
 
-
   actualizarUsuario(usu_codigo, usuario: Usuario) {
     return this.http.put(
-      'http://localhost:3000/usuario/update/' + usu_codigo,
+      'http://localhost:3000/usuarios/update/' + usu_codigo,
       usuario
     );
   }
   
-
   eliminarUsuarioService(id: Observable<Usuario[]>) {
     return this.http.delete<Usuario[]>(
-      'http://localhost:3000/usuario/remove/' + id
+      'http://localhost:3000/usuarios/remove/' + id
     );
   }
 }

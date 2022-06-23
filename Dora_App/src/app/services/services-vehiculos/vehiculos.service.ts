@@ -19,7 +19,7 @@ export class VehiculoService {
   }
 
   buscarVehiculo(texto: String) {
-    return this.http.get(this.api + `s-filter?q=${texto}`);
+    return this.http.get(this.api + `-filter?q=${texto}`);
   }
 
   obtenerVehiculo(id: number){

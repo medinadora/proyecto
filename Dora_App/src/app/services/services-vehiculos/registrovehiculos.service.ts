@@ -8,11 +8,11 @@ import { Observable } from 'rxjs';
     providedIn: 'root',
   })
   export class RegistroVehiculoService {
-    api = 'http://localhost:3000/Vehiculo';
+    api = 'http://localhost:3000/vehiculos';
     constructor(public http: HttpClient) {}
   
     listarVehiculo() {
-      return this.http.get(this.api + 's');
+      return this.http.get(this.api);
     }
   
     crearVehiculo(user: any) {
@@ -20,9 +20,11 @@ import { Observable } from 'rxjs';
     }
   
     buscarVehiculo(texto: String) {
-      return this.http.get(this.api + `s-filter?q=${texto}`);
+      return this.http.get(this.api + `-filter/${texto}`); 
     }
-  
+    
+  // `-filter?q=${texto}
+
     obtenerVehiculo(id: number){
       const path = `${this.api}/find/${id}`;
       return this.http.get(path);
@@ -31,7 +33,7 @@ import { Observable } from 'rxjs';
   
     actualizarVehiculo(vehi_codigo, vehiculo: Vehiculo) {
       return this.http.put(
-        'http://localhost:3000/vehiculo/update/' + vehi_codigo,
+        'http://localhost:3000/vehiculos/update/' + vehi_codigo,
         vehiculo
       );
     }
@@ -39,7 +41,7 @@ import { Observable } from 'rxjs';
   
     eliminarVehiculoService(id: Observable<Vehiculo[]>) {
       return this.http.delete<Vehiculo[]>(
-        'http://localhost:3000/Vehiculo/remove/' + id
+        'http://localhost:3000/vehiculos/remove/' + id
       );
     }
   }

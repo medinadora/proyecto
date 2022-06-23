@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/pagina-principal" color="tertiary">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title color="tertiary" > Actualizar cargas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="actualizarCargaForm" (ngSubmit)="actualizarForm()">
+    <ion-card>
+      <ion-item>
+        <ion-label>Empresa:</ion-label>
+        <ion-input
+          type="text"
+          formControlName="car_empresa"
+          value="{{this.car_empresa}}"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Tipo de carga:</ion-label>
+        <ion-input
+          type="text"
+          formControlName="car_tipo"
+          value="{{this.car_tipo}}"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Origen y destino: </ion-label>
+        <ion-input
+          type="text"
+          formControlName="car_origen_destino"
+          value="{{this.car_origen_destino}}"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Precio de la carga:</ion-label>
+        <ion-input
+          type="number"
+          formControlName="car_precio"
+          value="{{this.car_precio}}"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Fecha de emision de carga:</ion-label>
+        <ion-input
+          type="date"
+          formControlName="car_fecha"
+          value="{{this.car_fecha}}"
+        ></ion-input>
+      </ion-item>
+
+      <ion-button expand="block" type="submit" [routerLink]="['/cargas/']" >Actualizar</ion-button>
+    </ion-card>
+  </form>
+</ion-content>
