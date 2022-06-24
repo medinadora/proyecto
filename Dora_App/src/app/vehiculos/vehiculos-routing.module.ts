@@ -19,6 +19,10 @@ const routes: Routes = [
   {
     path: 'actualizar',
     loadChildren: () => import('./actualizar/actualizar.module').then( m => m.ActualizarVehiculosPageModule)
+  },
+  {
+    path: 'actualizar/:id',
+    loadChildren: () => import('./actualizar/actualizar.module').then( m => m.ActualizarVehiculosPageModule)
   }
 ];
 
