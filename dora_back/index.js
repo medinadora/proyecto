@@ -15,5 +15,8 @@ app.use(cors());
 require('./src/routes/cargas.routes')(app);
 require('./src/routes/usuarios.routes')(app);
 require('./src/routes/vehiculos.routes')(app);
+require('./src/routes/prueba.routes')(app);
+require('./src/routes/roles.routes')(app);
+
 
 app.listen(3000, () => console.log("listening on port 3000") ) ;
